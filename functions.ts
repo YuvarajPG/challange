@@ -150,4 +150,15 @@ const numberContains = (array: number[], contain: number): boolean => {
     }
     return false;
 };
-console.log(`The number is ${numberContains(arr, 0)}`);
+console.log(`The number value is ${numberContains(arr, 0)}`);
+
+/* alternative challenge for problem 15 */
+const numberContainsAnotherMethod = (array:number[],contain:number):boolean => {
+    for (let i = 0; i < array.length; i++){
+        if (contain === array[i]) {
+            return true
+        }
+    }
+    return false
+}
+console.log(`The number value is ${numberContainsAnotherMethod(arr,2)} by without using include function`)
