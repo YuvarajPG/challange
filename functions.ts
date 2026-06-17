@@ -120,11 +120,11 @@ console.log(sumArr(arr));
 const smallestNumberInArr = (array: number[]): number => {
     let smallNumber: number = 0;
     let sortedArr = array.sort((a, b) => a - b);
-    return smallNumber=sortedArr[0]!;
+    return (smallNumber = sortedArr[0]!);
 };
 console.log(
     `The smallest number in an array is ${smallestNumberInArr([1, 2, 3, 4, 5, 6])}`,
-); 
+);
 
 /* problem 14 */
 const countVowels = (str: string): number => {
@@ -142,7 +142,6 @@ console.log(countVowels("hello"));
 
 /* problem 15 */
 const numberContains = (array: number[], contain: number): boolean => {
-    let contains: number = contain;
     for (let index = 0; index < array.length; index++) {
         if (array.includes(contain)) {
             return true;
@@ -153,12 +152,97 @@ const numberContains = (array: number[], contain: number): boolean => {
 console.log(`The number value is ${numberContains(arr, 0)}`);
 
 /* alternative challenge for problem 15 */
-const numberContainsAnotherMethod = (array:number[],contain:number):boolean => {
-    for (let i = 0; i < array.length; i++){
+const numberContainsAnotherMethod = (
+    array: number[],
+    contain: number,
+): boolean => {
+    for (let i = 0; i < array.length; i++) {
         if (contain === array[i]) {
-            return true
+            return true;
         }
     }
-    return false
-}
-console.log(`The number value is ${numberContainsAnotherMethod(arr,2)} by without using include function`)
+    return false;
+};
+console.log(
+    `The number value is ${numberContainsAnotherMethod(arr, 2)} by without using include function`,
+);
+
+/* Day 3 */
+/* objects type */
+type User = {
+    name: string;
+    age: number;
+};
+
+const data: User = {
+    name: "yuvaraj",
+    age: 20,
+};
+
+const arrData: User[] = [
+    { name: "John", age: 5 },
+    { name: "Alex", age: 30 },
+    { name: "Mike", age: 25 },
+];
+
+/* problem 16 */
+const getUserName = (input: User): string => {
+    return input.name;
+};
+console.log(getUserName(data));
+
+/* problem 17 */
+const adult: User = {
+    name: "yuvaraj",
+    age: 20,
+};
+
+const adultFunction = (input: User): boolean => {
+    if (input.age >= 18) {
+        return true;
+    }
+    return false;
+};
+console.log(adultFunction(adult));
+
+/* problem 18 */
+const OldestUser = (input: User[]): string => {
+    if (input.length !== 0) {
+        let oldestUser = input[0]!;
+        for (let index = 0; index < input.length; index++) {
+            if (input[index]!.age > oldestUser!.age) {
+                oldestUser = input[index]!;
+            }
+        }
+        return `The oldest user is ${oldestUser.name}, ${oldestUser.age}`;
+    }
+    return "no data is provided";
+};
+console.log(OldestUser(arrData));
+
+/* problem 19 */
+const AdultCountFunction = (input: User[]): number => {
+    let count = 0;
+    for (let index = 0; index < input.length; index++) {
+        if (input[index]!.age > 18) {
+            count++;
+        }
+    }
+    return count;
+};
+console.log(AdultCountFunction(arrData));
+
+/* problem 20 */
+const findUserByName = (
+    input: User[],
+    searchingData: string,
+): object | null => {
+    let found = {};
+    for (let index = 0; index < input.length; index++) {
+        if (input[index]?.name.toLowerCase() === searchingData.toLowerCase()) {
+            return input[index]!;
+        }
+    }
+    return null;
+};
+console.log(findUserByName(arrData, "Alex"));
