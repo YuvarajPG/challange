@@ -236,7 +236,7 @@ console.log(AdultCountFunction(arrData));
 const findUserByName = (
     input: User[],
     searchingData: string,
-): object | null => {
+): User | null => {
     let found = {};
     for (let index = 0; index < input.length; index++) {
         if (input[index]?.name.toLowerCase() === searchingData.toLowerCase()) {
