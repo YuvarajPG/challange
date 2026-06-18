@@ -237,7 +237,6 @@ const findUserByName = (
     input: User[],
     searchingData: string,
 ): User | null => {
-    let found = {};
     for (let index = 0; index < input.length; index++) {
         if (input[index]?.name.toLowerCase() === searchingData.toLowerCase()) {
             return input[index]!;
@@ -246,3 +245,7 @@ const findUserByName = (
     return null;
 };
 console.log(findUserByName(arrData, "Alex"));
+
+
+/* day 4 */
+/* problem 21 */

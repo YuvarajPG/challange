@@ -1,0 +1,53 @@
+Try solving this without looking anything up:
+
+type Product = {
+    name: string;
+    price: number;
+};
+
+Given:
+
+const products = [
+    { name: "Mouse", price: 500 },
+    { name: "Keyboard", price: 1500 },
+    { name: "Monitor", price: 12000 }
+];
+
+Return:
+
+Monitor
+
+(the most expensive product)
+
+It's basically Problem 18 with products instead of users.
+
+If you're mentally tired
+Listen to music.
+Watch one short tech video.
+Read a few pages of a book.
+Take a short walk if it's safe and practical.
+If you're just bored and want something fun
+
+Try this brain teaser:
+
+You have:
+
+const arr = [1, 2, 3, 4, 5];
+
+Without using:
+
+reverse()
+
+print:
+
+5
+4
+3
+2
+1
+
+in a loop.
+
+
+
+---------------------completed the problems---------------------
