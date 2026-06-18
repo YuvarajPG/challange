@@ -230,13 +230,10 @@ const AdultCountFunction = (input: User[]): number => {
     }
     return count;
 };
-console.log(AdultCountFunction(arrData));
+console.log(`The Adult Count is ${AdultCountFunction(arrData)}`);
 
 /* problem 20 */
-const findUserByName = (
-    input: User[],
-    searchingData: string,
-): User | null => {
+const findUserByName = (input: User[], searchingData: string): User | null => {
     for (let index = 0; index < input.length; index++) {
         if (input[index]?.name.toLowerCase() === searchingData.toLowerCase()) {
             return input[index]!;
@@ -246,6 +243,82 @@ const findUserByName = (
 };
 console.log(findUserByName(arrData, "Alex"));
 
-
 /* day 4 */
+type ProductType = {
+    name: string;
+    price: number;
+};
+
+const products: ProductType[] = [
+    { name: "Mouse", price: 500 },
+    { name: "Keyboard", price: 1500 },
+    { name: "Monitor", price: 12000 },
+];
+
 /* problem 21 */
+const getProductName = (input:ProductType): string => {
+    return input.name;
+};
+console.log(getProductName(products[0]!));
+
+/* problem 22 */
+const mostExpensiveProduct = (input: ProductType[]): string => {
+    let expensiveThing = "";
+    let price = 0;
+    for (let index = 0; index < input.length; index++) {
+        if (input[index]!.price > price) {
+            price = input[index]!.price;
+            expensiveThing = input[index]!.name;
+        }
+    }
+    return expensiveThing;
+};
+console.log(`The expensive thing is ${mostExpensiveProduct(products)}`);
+
+/* problem 23 */
+const calculateTotalPriceFunction = (input: ProductType[]): number => {
+    let price = 0;
+    for (let index = 0; index < input.length; index++) {
+        price += input[index]!.price;
+    }
+    return price;
+};
+console.log(`The total price is ${calculateTotalPriceFunction(products)}`);
+
+/* problem 24 */
+const findProductByName = (
+    input: ProductType[],
+    searchingThing: string,
+): ProductType | null => {
+    for (let index = 0; index < input.length; index++) {
+        if (
+            input[index]!.name.toLowerCase() ===
+            searchingThing.toLocaleLowerCase()
+        ) {
+            return input[index]!;
+        }
+    }
+    return null;
+};
+console.log(findProductByName(products, "keyboard"));
+
+/* problem 25 */
+const countExpensiveProducts = (
+    input: ProductType[],
+    price: number,
+): string => {
+    let things = "";
+    for (let index = 0; index < input.length; index++) {
+        if (price < input[index]!.price) {
+            things += input[index]?.name + "\n";
+        }
+    }
+    return things;
+};
+console.log(
+    `The expensive things are ${countExpensiveProducts(products, 1000)}`,
+);
+
+
+/* day 5 */
+/* problem 26 */
