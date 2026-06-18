@@ -5,7 +5,7 @@ const arr: number[] = [1, 2, 3, 5, 24, 35, 65, 17, 8, 9, 10];
 const greetings = (name: string): string => {
     return `hi ${name}`;
 };
-console.log(greetings("yuvaraj"));
+console.log(`\n ${greetings("yuvaraj")}`);
 
 /* problem 2 */
 const squareFunction = (value: number): number => {

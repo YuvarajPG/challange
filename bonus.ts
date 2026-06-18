@@ -1,3 +1,4 @@
+/* bonus 1 */
 type Product = {
     name: string;
     price: number;
