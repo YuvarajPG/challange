@@ -10,12 +10,19 @@ const products = [
     { name: "Keyboard", price: 1500, stock: 5 },
 ];
 
-const totalInventoryValue = (input:Product[]):number => {
-    let total = 0
+const totalInventoryValue = (input: Product[]): number => {
+    let total = 0;
     for (let index = 0; index < input.length; index++) {
-        total+=input[index]!.price*input[index]!.stock
+        total += input[index]!.price * input[index]!.stock;
     }
-    return total
+    return total;
+};
+console.log(totalInventoryValue(products));
 
-}
-console.log(totalInventoryValue(products))
+/* day 2 */
+/* bonus p-2*/
+const arr = [1, 2, 3, 4, 5];
+const mapped = arr.map((item) => {
+    return item * item;
+});
+console.log(mapped)

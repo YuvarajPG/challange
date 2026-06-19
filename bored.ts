@@ -47,6 +47,7 @@ const arrReverseWithoutArrMethod = (input: number[]): number[] => {
 };
 console.log(arrReverseWithoutArrMethod(arr));
 
+
 /* day 2 */
 /* bored p-4 */
 const averageProductPrice = (input: productType[]) => {
@@ -113,33 +114,16 @@ console.log(
 
 /* bored p-8 */
 const secondMostExpensiveProduct = (input: productType[]): string | any => {
-    let secodnMostThing = "no";
-    let arr = [];
-    let temp = [];
-    let arrs = [];
-    /* creating an array, i think it can be helpful  */
+    let sorted = [0]
     for (let index = 0; index < input.length; index++) {
-        arrs.push(input[index]?.price);
-    }
-
-    for (let index = 0; index < input.length; index++) {
-        let curValue = arrs[index]!;
-        let nextValue = arrs[++index]!;
-        if (curValue > nextValue) {
-            temp[index] = curValue;
-            index++;
-            console.log('greater')
-        } else {
-            temp[index] = nextValue;
-            index--;
-            console.log('lesser')
+        if (sorted[index]!<input[index]!.price) {
+            sorted[index] = input[index]!.price
+            index++
+            console.log(sorted)
         }
-        arr.push(temp);
+        else if (sorted) {
+            continue
+        }
     }
-    console.log(arrs);
-
-    // [500,12000,5000,20000] values are present now
-    console.log("the end of loop");
-    return secodnMostThing;
 };
 console.log(secondMostExpensiveProduct(products));

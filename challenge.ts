@@ -250,13 +250,13 @@ type ProductType = {
 };
 
 const products: ProductType[] = [
-    { name: "Mouse", price: 500 },
+    { name: "Mouse", price: 50000 },
     { name: "Keyboard", price: 1500 },
     { name: "Monitor", price: 12000 },
 ];
 
 /* problem 21 */
-const getProductName = (input:ProductType): string => {
+const getProductName = (input: ProductType): string => {
     return input.name;
 };
 console.log(getProductName(products[0]!));
@@ -319,6 +319,96 @@ console.log(
     `The expensive things are ${countExpensiveProducts(products, 1000)}`,
 );
 
-
 /* day 5 */
 /* problem 26 */
+const findMethod = (
+    input: ProductType[],
+    thing: string,
+): ProductType | undefined => {
+    const found = input.find((item) => {
+        return item.name.toLowerCase() === thing.toLowerCase();
+    });
+    return found;
+};
+console.log("the finding is with find", findMethod(products, "mouse"));
+
+/* using withoutFind method */
+/* 
+const findWithoutMethod = (
+    searching: string,
+    input: ProductType[],
+): ProductType | null => {
+    if (input.length === 0) {
+        return null;
+    }
+    for (let index = 0; index < input.length; index++) {
+        if (input[index]!.name.toLowerCase() === searching.toLowerCase()) {
+            return input[index]!;
+        }
+    }
+    return null;
+};
+console.log(findWithoutMethod("keyboard", products));
+ */
+
+/* problem 27 */
+const filterByMethod = (
+    input: ProductType[],
+    price: number,
+): ProductType[]  => {
+    const filtered = input.filter((item) => {
+        return item.price > price;
+    });
+    return filtered;
+};
+console.log("by filtered method", filterByMethod(products, 10000));
+
+/* using withoutFilter */
+/*
+const manualFilter = (
+    input: ProductType[],
+    price: number,
+): ProductType[] | null => {
+    let filtered = [];
+    for (let index = 0; index < input.length; index++) {
+        if (input[index]!.price > price) {
+            filtered.push(input[index]!);
+        }
+    }
+    return filtered;
+};
+console.log("the product is ", manualFilter(products, 10000));
+ */
+
+/* problem 28 */
+const mapFunction = (input: ProductType[]): string[] => {
+    const mapped = input.map((item) => {
+        return item.name;
+    });
+    return mapped;
+};
+console.log("the map function ", mapFunction(products));
+
+/* problem 29 */
+const someFunction = (input: ProductType[], price: number): boolean => {
+    if (input.length !== 0) {
+        const someValue = input.some((item) => {
+            return item.price > price;
+        });
+        return someValue;
+    }
+    return false;
+};
+console.log("the some function ", someFunction(products, 10000));
+
+/* problem 30 */
+const everyFunction = (input: ProductType[], price: number): boolean => {
+    if (input.length !== 0) {
+        const everies = input.every((item) => {
+            return item.price > price;
+        });
+        return everies;
+    }
+    return false;
+};
+console.log("the every function", everyFunction(products, 10000));
