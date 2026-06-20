@@ -26,3 +26,8 @@ let every = arr.every((item) => {
     return item > 0;
 });
 console.log("every", every);
+
+const reduced = arr.reduce((total,cur):number => {
+    return total+cur
+},) 
+console.log(reduced)

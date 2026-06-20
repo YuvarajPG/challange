@@ -12,10 +12,10 @@ type productType = {
 };
 
 const products: productType[] = [
-    { name: "Mouse", price: 50000 },
-    { name: "Monitor", price: 12000 },
-    { name: "Keyboard", price: 1500 },
-    { name: "lap", price: 20000 },
+    { name: "Mouse", price: 100 },
+    { name: "Monitor", price: 1000 },
+    { name: "Keyboard", price: 500 },
+    { name: "lap", price: 2000 },
 ];
 
 const expensiveProductFunction = (input: productType[]): string => {
@@ -47,7 +47,6 @@ const arrReverseWithoutArrMethod = (input: number[]): number[] => {
 };
 console.log(arrReverseWithoutArrMethod(arr));
 
-
 /* day 2 */
 /* bored p-4 */
 const averageProductPrice = (input: productType[]) => {
@@ -65,14 +64,14 @@ const cheapestProduct = (input: productType[]): string => {
     for (let index = 0; index < input.length; index++) {
         sortedPrice.push(input[index]!.price);
     }
-    sortedPrice = sortedPrice.sort((a, b) => b-a)
+    sortedPrice = sortedPrice.sort((a, b) => b - a);
     /* tried some other method but didnt go well so i switched to sorting */
     for (let index = 0; index < input.length; index++) {
-        if (sortedPrice[input.length-1]===input[index]?.price) {
-            return input[index]!.name
+        if (sortedPrice[input.length - 1] === input[index]?.price) {
+            return input[index]!.name;
         }
     }
-    return "none"
+    return "none";
 };
 console.log(cheapestProduct(products));
 
@@ -113,17 +112,24 @@ console.log(
 );
 
 /* bored p-8 */
-const secondMostExpensiveProduct = (input: productType[]): string | any => {
-    let sorted = [0]
-    for (let index = 0; index < input.length; index++) {
-        if (sorted[index]!<input[index]!.price) {
-            sorted[index] = input[index]!.price
-            index++
-            console.log(sorted)
+const secondMostExpensiveProduct = (array:productType[]): string => {
+    let largest = 0
+    let second = 0
+    for (let index = 0; index < array.length; index++) {
+        if (array[index]!.price > largest) {    /* 100>0 true */ /* loop two 1000> */
+            /* largest = 100 */
+
+            largest = array[index]!.price
+            second =  largest /* 100 is set to second one */
+            largest = array[index+1]!.price/* 500 is largest now */ /* 100,1000,500,2000 */
+            console.log(largest)
         }
-        else if (sorted) {
-            continue
+        else if(second>array[index]!.price){
+            
         }
+        /* as for now largest but not the correct one bcz its not sorted data */
     }
+
+    return "none"
 };
-console.log(secondMostExpensiveProduct(products));
+console.log("second ", secondMostExpensiveProduct(products));

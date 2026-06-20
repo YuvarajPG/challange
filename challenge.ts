@@ -250,9 +250,15 @@ type ProductType = {
 };
 
 const products: ProductType[] = [
-    { name: "Mouse", price: 50000 },
+    { name: "Mouse", price: 500 },
     { name: "Keyboard", price: 1500 },
-    { name: "Monitor", price: 12000 },
+    { name: "Monitor", price: 1000 },
+];
+
+const unSortedProducts: ProductType[] = [
+    { name: "Mouse", price: 15000 },
+    { name: "Keyboard", price: 500 },
+    { name: "Monitor", price: 10000 },
 ];
 
 /* problem 21 */
@@ -352,10 +358,7 @@ console.log(findWithoutMethod("keyboard", products));
  */
 
 /* problem 27 */
-const filterByMethod = (
-    input: ProductType[],
-    price: number,
-): ProductType[]  => {
+const filterByMethod = (input: ProductType[], price: number): ProductType[] => {
     const filtered = input.filter((item) => {
         return item.price > price;
     });
@@ -412,3 +415,55 @@ const everyFunction = (input: ProductType[], price: number): boolean => {
     return false;
 };
 console.log("the every function", everyFunction(products, 10000));
+
+/* day 6 */
+/* problem 31 */
+const sumWithReduce = (numbers: number[]): number => {
+    return numbers.reduce((num, cur) => {
+        return num + cur;
+    },0);
+};
+console.log("the sum of the arr ", sumWithReduce(arr));
+
+/* problem 32 */
+const totalProductPriceUsingReduce = (input: ProductType[]): number | any => {
+    return input.reduce((pre, cur) => {
+        return pre + cur.price;
+    }, 0);
+};
+console.log(
+    "the total product price is ",
+    totalProductPriceUsingReduce(products),
+);
+
+/* problem 33 */
+const mostExpensiveProductUsingReduce = (input: ProductType[]): string => {
+    const name = input.reduce((pre, curr) => {
+        if (curr.price > pre.price) {
+            pre = curr;
+        }
+        return pre;
+    });
+    return name.name;
+};
+console.log(
+    "the most expensive product is ",
+    mostExpensiveProductUsingReduce(products),
+);
+
+/* problem 34 */
+const averageProductPriceUsingReduce = (input: ProductType[]): number => {
+    return input.reduce((num, cur) => {
+        return num + cur.price / input.length;
+    }, 0);
+};
+console.log("the avg of product is", averageProductPriceUsingReduce(products));
+
+/* problem 35 */
+const createProductLabels = (input:ProductType[]):string[] => {
+    return input.map((item) => {
+        return item.name +" - $"+  item.price
+    })
+}
+
+console.log(createProductLabels(products))

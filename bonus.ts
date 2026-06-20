@@ -26,3 +26,12 @@ const mapped = arr.map((item) => {
     return item * item;
 });
 console.log(mapped)
+
+/* day 3 */
+/* bonus p-3 */
+const multiplicationUsingReduce = (input:number[]):number => {
+    return input.reduce((num,cur) => {
+        return cur*num
+    },1)
+}
+console.log(multiplicationUsingReduce(arr))
