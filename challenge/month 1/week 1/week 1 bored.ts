@@ -12,10 +12,10 @@ type productType = {
 };
 
 const products: productType[] = [
-    { name: "Mouse", price: 100 },
-    { name: "Monitor", price: 1000 },
-    { name: "Keyboard", price: 500 },
-    { name: "lap", price: 2000 },
+    { name: "Mouse", price: 500 },
+    { name: "Keyboard", price: 1500 },
+    { name: "Monitor", price: 12000 },
+    { name: "Laptop", price: 20000 },
 ];
 
 const expensiveProductFunction = (input: productType[]): string => {
@@ -111,25 +111,56 @@ console.log(
     `The count of product that are above price is ${countProductsAbovePrice(products, 1000)}`,
 );
 
-/* bored p-8 */
-const secondMostExpensiveProduct = (array:productType[]): string => {
-    let largest = 0
-    let second = 0
-    for (let index = 0; index < array.length; index++) {
-        if (array[index]!.price > largest) {    /* 100>0 true */ /* loop two 1000> */
-            /* largest = 100 */
+// /* bored p-8 */
+// const secondMostExpensiveProduct = (array: productType[]): string => {
+//     let largest = 0;
+//     let second = 0;
+//     for (let index = 0; index < array.length; index++) {
+//         if (array[index]!.price > largest) {
+//             /* 100>0 true */ /* loop two 1000> */
+//             /* largest = 100 */
 
-            largest = array[index]!.price
-            second =  largest /* 100 is set to second one */
-            largest = array[index+1]!.price/* 500 is largest now */ /* 100,1000,500,2000 */
-            console.log(largest)
-        }
-        else if(second>array[index]!.price){
-            
-        }
-        /* as for now largest but not the correct one bcz its not sorted data */
-    }
+//             largest = array[index]!.price;
+//             second = largest; /* 100 is set to second one */
+//             largest =
+//                 array[index + 1]!
+//                     .price; /* 500 is largest now */ /* 100,1000,500,2000 */
+//             console.log(largest);
+//         } else if (second > array[index]!.price) {
+//         }
+//         /* as for now largest but not the correct one bcz its not sorted data */
+//     }
 
-    return "none"
-};
-console.log("second ", secondMostExpensiveProduct(products));
+//     return "none";
+// };
+// console.log("second ", secondMostExpensiveProduct(products));
+
+    /* day 3 */
+    /* bored p-9 */
+    const productsInRange = (
+        input: productType[],
+        minPrice: number,
+        maxPrice: number,
+        returnType: boolean,
+    ): productType[] | string[] => {
+        const filtered:productType[] = [];
+        const optionFilter:string[] = []
+        if (returnType) {
+            for (let index = 0; index < input.length; index++) {
+                if (
+                    maxPrice >= input[index]!.price &&
+                    input[index]!.price >= minPrice
+                ) {
+                    filtered.push(input[index]!);
+                }
+            }
+            return filtered;
+        }
+        for (let index = 0; index < input.length; index++) {
+            if (maxPrice >= input[index]!.price && input[index]!.price >= minPrice) {
+                optionFilter.push(input[index]!.name);
+            }
+        }
+        return optionFilter
+    };
+    console.log(productsInRange(products, 1000, 15000, true));

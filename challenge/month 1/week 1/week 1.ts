@@ -469,7 +469,7 @@ console.log(createProductLabels(products));
 
 /* day 7 */
 /* problem 36,37 */
-const sort = (input: ProductType[], ascending: number): number[] => {
+const sort = (input: ProductType[], ascending:boolean): number[] => {
     if (ascending) {
         return input
             .sort((a, b) => a.price - b.price)
@@ -481,7 +481,7 @@ const sort = (input: ProductType[], ascending: number): number[] => {
         })
         .map((item) => item.price);
 };
-console.log(sort(products, 0));
+console.log(sort(products, true));
 
 /* problem 38 */
 const getExpensiveProductNames = (
