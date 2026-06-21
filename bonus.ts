@@ -5,9 +5,21 @@ type Product = {
     stock: number;
 };
 
-const products = [
+type NormalProduct = {
+    name: string;
+    price: number;
+};
+
+const products: Product[] = [
     { name: "Mouse", price: 500, stock: 10 },
     { name: "Keyboard", price: 1500, stock: 5 },
+];
+
+const normalProducts: NormalProduct[] = [
+    { name: "Mouse", price: 500 },
+    { name: "Keyboard", price: 1500 },
+    { name: "Monitor", price: 12000 },
+    { name: "Headset", price: 2500 },
 ];
 
 const totalInventoryValue = (input: Product[]): number => {
@@ -25,13 +37,25 @@ const arr = [1, 2, 3, 4, 5];
 const mapped = arr.map((item) => {
     return item * item;
 });
-console.log(mapped)
+console.log(mapped);
 
 /* day 3 */
 /* bonus p-3 */
-const multiplicationUsingReduce = (input:number[]):number => {
-    return input.reduce((num,cur) => {
-        return cur*num
-    },1)
-}
-console.log(multiplicationUsingReduce(arr))
+const multiplicationUsingReduce = (input: number[]): number => {
+    return input.reduce((num, cur) => {
+        return cur * num;
+    }, 1);
+};
+console.log(multiplicationUsingReduce(arr));
+
+/* day 4 */
+/* bonus p-4 */
+const onlyProductsAbove = (input: NormalProduct[], price: number): string[] => {
+    return input.filter((item) => {
+        return item.price > price;
+    }).map((item) => {
+        return item.name +" - $"+ item.price
+    });
+
+};
+console.log(onlyProductsAbove(normalProducts, 2000));

@@ -421,7 +421,7 @@ console.log("the every function", everyFunction(products, 10000));
 const sumWithReduce = (numbers: number[]): number => {
     return numbers.reduce((num, cur) => {
         return num + cur;
-    },0);
+    }, 0);
 };
 console.log("the sum of the arr ", sumWithReduce(arr));
 
@@ -460,10 +460,60 @@ const averageProductPriceUsingReduce = (input: ProductType[]): number => {
 console.log("the avg of product is", averageProductPriceUsingReduce(products));
 
 /* problem 35 */
-const createProductLabels = (input:ProductType[]):string[] => {
+const createProductLabels = (input: ProductType[]): string[] => {
     return input.map((item) => {
-        return item.name +" - $"+  item.price
-    })
-}
+        return item.name + " - $" + item.price;
+    });
+};
+console.log(createProductLabels(products));
 
-console.log(createProductLabels(products))
+/* day 7 */
+/* problem 36,37 */
+const sort = (input: ProductType[], ascending: number): number[] => {
+    if (ascending) {
+        return input
+            .sort((a, b) => a.price - b.price)
+            .map((item) => item.price);
+    }
+    return input
+        .sort((a, b) => {
+            return b.price - a.price;
+        })
+        .map((item) => item.price);
+};
+console.log(sort(products, 0));
+
+/* problem 38 */
+const getExpensiveProductNames = (
+    input: ProductType[],
+    price: number,
+): string[] => {
+    return input
+        .filter((item) => {
+            return item.price > price;
+        })
+        .map((item) => {
+            return item.name;
+        });
+};
+console.log(getExpensiveProductNames(products, 100));
+
+/* problem 39 */
+const cheapestProduct = (input: ProductType[]): string => {
+    return input
+        .sort((a, b) => {
+            return a.price - b.price;
+        })
+        .at(0)!.name;
+};
+console.log("the cheapest product is ", cheapestProduct(products));
+
+/* problem 40 */
+const mostExpensiveProductName = (input: ProductType[]): string => {
+    return input
+        .sort((a, b) => {
+            return b.price - a.price;
+        })
+        .at(0)!.name;
+};
+console.log(mostExpensiveProductName(products));
