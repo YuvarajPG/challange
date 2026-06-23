@@ -1,31 +1,10 @@
 /* bonus 1 */
-type Product = {
-    name: string;
-    price: number;
-    stock: number;
-};
 
-type NormalProduct = {
-    name: string;
-    price: number;
-};
-
-const products: Product[] = [
-    { name: "Mouse", price: 500, stock: 10 },
-    { name: "Keyboard", price: 1500, stock: 5 },
-];
-
-const normalProducts: NormalProduct[] = [
-    { name: "Mouse", price: 500 },
-    { name: "Keyboard", price: 1500 },
-    { name: "Monitor", price: 12000 },
-    { name: "Headset", price: 2500 },
-];
-
-const totalInventoryValue = (input: Product[]): number => {
+import { arr, normalProducts, products, ProductType, NormalProduct } from "./data";
+const totalInventoryValue = (input: ProductType[]): number => {
     let total = 0;
     for (let index = 0; index < input.length; index++) {
-        total += input[index]!.price * input[index]!.stock;
+        total += input[index]!.price * input[index]!.stock!;
     }
     return total;
 };
@@ -33,7 +12,6 @@ console.log(totalInventoryValue(products));
 
 /* day 2 */
 /* bonus p-2*/
-const arr = [1, 2, 3, 4, 5];
 const mapped = arr.map((item) => {
     return item * item;
 });
