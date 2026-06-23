@@ -1,5 +1,6 @@
 // week 1 data.ts
 export const arr: number[] = [1, 2, 3, 5, 24, 35, 65, 17, 8, 9, 10];
+export const boredWeek2 : number[]=[1,2,3,4,5,6,7,8,9,10]
 
 export type ProductType = {
     name: string;
