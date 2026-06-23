@@ -33,10 +33,42 @@ const findProductStartingWith = (
   searchingLetter: string,
 ): ProductType | null => {
   if (!searchingLetter) return null;
-  const found = input.find((item) => item.name.toLocaleLowerCase.startsWith(searchingLetter.toLowerCase()));
+  const found = input.find((item) =>
+    item.name.toLocaleLowerCase().startsWith(searchingLetter.toLowerCase()),
+  );
   return found ?? null;
 };
 console.log(findProductStartingWith(products, "e"));
 
 /* day 9 */
 /* problem 46 */
+const findIndex = (input: ProductType[], seaching: string): number => {
+  return input.findIndex(
+    (item) => item.name.toLowerCase() === seaching.toLowerCase(),
+  );
+};
+console.log(findIndex(products, "mouse"));
+
+/* problem 47 */
+const getLastProduct = (input: ProductType[]): ProductType => {
+  return input.at(-1)!;
+};
+console.log(getLastProduct(products));
+
+/* problem 48 */
+const getFirstTwoProducts = (input: ProductType[]): ProductType[] => {
+  return input.slice(-2);
+};
+console.log(getFirstTwoProducts(products));
+
+/* problem 49 */
+const reverseProduct = (input:ProductType[]):ProductType[]=>{
+  return input.reverse()
+}
+console.log(reverseProduct(products));
+
+/* problem 50 */
+const allProductNames = (input:ProductType[]):string=>{
+  return input.map((item)=>(item.name)).join(", ")
+}
+console.log(allProductNames(products));

@@ -152,7 +152,4 @@ console.log(productsInRange(products, 1000, 15000, true));
 
 /* day 4 */
 /* bored p-10 */
-const secondMostExpensive = (input: ProductType[]): ProductType | null => {
-    return input
-};
-console.log(object);
+ /* skipped */
