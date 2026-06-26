@@ -5,7 +5,7 @@ export const boredWeek2 : number[]=[1,2,3,4,5,6,7,8,9,10]
 export type ProductType = {
     name: string;
     price: number;
-    stock?:number
+    stock:number
 };
 
 // week 1 bonus data.ts
@@ -23,12 +23,18 @@ export const normalProducts: NormalProduct[] = [
 
 // week 2 data.ts
 export const products: ProductType[] = [
-    { name: "Mouse", price: 500, stock: 10 },
-    { name: "Keyboard", price: 1500, stock: 5 },
+    { name: "Mouse", price: 500, stock: 3 },
+    { name: "Keyboard", price: 1500, stock: 1 },
     { name: "Monitor", price: 12000, stock: 0 },
-    { name: "Laptop", price: 20000, stock: 2 },
+    { name: "Laptop", price: 20000, stock: 4 },
 ];
 
+// export const unSortedArr :ProductType[]=[
+    // { name: "Mouse", price: 500 },
+    // { name: "Keyboard", price: 1000 },
+    // { name: "Monitor", price: 5000 },
+    // { name: "Laptop", price: 2200 },
+// ];
 // week 3 data.ts
 export type UserType = {
     name: string;

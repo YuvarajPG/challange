@@ -11,7 +11,7 @@ console.log(arraysOfObjects(products));
 
 /* problem 42 */
 const calculateTotalstock = (input: ProductType[]) => {
-  return input.reduce((prev, curr) => (curr.stock! += prev), 0);
+  return input.reduce((prev, curr) => (prev += curr.stock), 0);
 };
 console.log(calculateTotalstock(products));
 
@@ -113,7 +113,68 @@ const firstProductNameEndsWith = (
   input: ProductType[],
   letter: string,
 ): ProductType | null => {
-  return input.find((item) => item.name.endsWith(letter))??null;
-  
+  return input.find((item) => item.name.endsWith(letter)) ?? null;
 };
 console.log(firstProductNameEndsWith(products, "d"));
+
+/* day 11 */
+/* problem 56 */
+const lowercase = (input: ProductType[]): string[] => {
+  return input.map((item) => item.name.toLowerCase());
+};
+console.log(lowercase(products));
+
+/* problem 57 */
+const availableProducts = (input: ProductType[]): ProductType[] => {
+  return input.filter((item) => item.stock > 0);
+};
+console.log(availableProducts(products));
+
+/* problem 58 */
+const expensiveProductNames = (
+  input: ProductType[],
+  price: number,
+): string[] => {
+  return input.filter((item) => item.price > price).map((item) => item.name);
+};
+console.log(expensiveProductNames(products, 10000));
+
+/* problem 59 */
+const outOfStockMethod = (input: ProductType[]): boolean => {
+  return input.some((item) => item.stock === 0);
+};
+console.log(outOfStockMethod(products));
+
+/* problem 60 */
+const totalValueOfAllProductsInStock = (input: ProductType[]): number => {
+  return input
+    .filter((item) => item.stock > 0)
+    .reduce((prev, curr) => (prev += curr.price * curr.stock), 0);
+};
+console.log(totalValueOfAllProductsInStock(products));
+
+/* day 12 */
+/* problem 61 */
+const availableProductNames = (input: ProductType[]): string[] => {
+  return input.filter((item) => item.stock > 0).map((item) => item.name);
+};
+console.log(availableProductNames(products));
+
+/* problem 62 */
+const stockGreaterThan = (
+  input: ProductType[],
+  stock: number,
+): ProductType[] => {
+  return input.filter((item) => item.stock > stock);
+};
+console.log(stockGreaterThan(products, 2));
+
+/* problem 63 */
+// const findFirstExpensiveProduct = (
+  // input: ProductType[],
+  // price: number,
+// ): ProductType | null => {
+  // return input.filter((item) => item.price>price);
+// };
+// console.log(findFirstExpensiveProduct(products, 2000));
+// 
