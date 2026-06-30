@@ -22,3 +22,6 @@ const keepOnlyEven = (input: number[]): number[] => {
 console.log('keep only',keepOnlyEven(boredWeek2));
 
 /* day 7 */
+const firstProduct = (input:ProductType[]):ProductType|null=>{
+  return null
+}

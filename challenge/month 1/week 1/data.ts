@@ -7,6 +7,11 @@ export type ProductType = {
     price: number;
     stock:number
 };
+export type ProductTypeWithOutStock = {
+    name:string,
+    price:number,
+    stock?:number
+}
 
 // week 1 bonus data.ts
 export type NormalProduct = {
@@ -29,12 +34,12 @@ export const products: ProductType[] = [
     { name: "Laptop", price: 20000, stock: 4 },
 ];
 
-// export const unSortedArr :ProductType[]=[
-    // { name: "Mouse", price: 500 },
-    // { name: "Keyboard", price: 1000 },
-    // { name: "Monitor", price: 5000 },
-    // { name: "Laptop", price: 2200 },
-// ];
+export const unSortedArr :ProductTypeWithOutStock[]=[
+    { name: "Mouse", price: 500 },
+    { name: "Keyboard", price: 1000 },
+    { name: "Monitor", price: 5000 },
+    { name: "Laptop", price: 2200 },
+];
 // week 3 data.ts
 export type UserType = {
     name: string;
