@@ -1,4 +1,4 @@
-import { ProductType, products, arr } from "./data";
+import { ProductType, products, arr } from "../data";
 /* day 1 */
 /* bored p-1 */
 const adultFunctionAge = (age: number): boolean => {

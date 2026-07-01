@@ -3,7 +3,7 @@ import {
   ProductType,
   unSortedArr,
   ProductTypeWithOutStock,
-} from "../week 1/data";
+} from "../data";
 
 /* day 8 */
 /* problem 41 */

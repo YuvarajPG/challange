@@ -1,6 +1,6 @@
 /* bonus 1 */
 
-import { arr, normalProducts, products, ProductType, NormalProduct } from "./data";
+import { arr, normalProducts, products, ProductType, NormalProduct } from "../data";
 const totalInventoryValue = (input: ProductType[]): number => {
     let total = 0;
     for (let index = 0; index < input.length; index++) {

@@ -1,4 +1,4 @@
-import { ProductType, products, boredWeek2, unSortedArr } from "../week 1/data";
+import { ProductType, products, boredWeek2, unSortedArr } from "../data";
 /* day 5 */
 /* bored p-11 */
 const findProductIndexManual = (

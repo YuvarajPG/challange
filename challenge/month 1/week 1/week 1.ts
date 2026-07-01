@@ -1,4 +1,4 @@
-import { ProductType, products, arr, UserType, data, arrData } from "./data";
+import { ProductType, products, arr, UserType, data, arrData } from "../data";
 
 /* Day 1 */
 /* problem 1 */
