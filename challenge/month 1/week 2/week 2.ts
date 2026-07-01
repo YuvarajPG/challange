@@ -238,8 +238,59 @@ const highestStockProduct = (
 ): ProductTypeWithOutStock | null => {
   return (
     input.reduce((prev, curr) => {
-      return prev.stock! > curr.stock! ? prev : curr
+      return prev.stock! > curr.stock! ? prev : curr;
     }) ?? null
   );
 };
 console.log("highest stock product", highestStockProduct(products));
+
+/* day 14 */
+/* problem 71 */
+const availableExpensiveProducts = (
+  input: ProductType[],
+  price: number,
+): string[] => {
+  return input
+    .filter((item) => item.price > price && item.stock !== 0)
+    .map((item) => item.name);
+};
+
+console.log(
+  "available Expensive Products",
+  availableExpensiveProducts(products, 1000),
+);
+
+/* problem 72 */
+const totalStockStartingWith = (
+  input: ProductType[],
+  letter: string,
+): number | any => {
+  return input.filter((item) => item.name.toLowerCase().startsWith(letter)).reduce((prev,curr)=>(prev+=curr.stock),0);
+};
+console.log(totalStockStartingWith(products, "l"));
+
+/* problem 73 */
+const averageAvailableProductPrice = (input: ProductType[]): number => {
+  return (
+    input
+      .filter((item) => item.stock > 0)
+      .reduce((prev, curr) => (prev += curr.price * curr.stock), 0) /
+    input
+      .filter((item) => item.stock > 0)
+      .reduce((prev, curr) => (prev += curr.stock), 0)
+  );
+};
+
+console.log(averageAvailableProductPrice(products));
+
+/* problem 74 */
+const alphabeticalNames = (input: ProductType[]): string[] => {
+  return input.map((item) => item.name).sort();
+};
+console.log(alphabeticalNames(products));
+
+/* problem 75 */
+const lastAvailableProduct = (input: ProductType[]): ProductType | null => {
+  return input.filter((item) => item.stock > 0).at(-1)!;
+};
+console.log(lastAvailableProduct(products));
