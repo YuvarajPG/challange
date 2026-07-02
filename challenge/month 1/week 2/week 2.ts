@@ -292,11 +292,11 @@ const alphabeticalNames = (input: ProductType[]): string[] => {
 console.log(alphabeticalNames(products));
 
 /* problem 75 */
-// const lastAvailableProduct = (input: ProductType[]): ProductType | null => {
-// return input.filter((item) => item.stock > 0).at(-1)!;
-// };
-// console.log(lastAvailableProduct(products));
-
+const lastAvailableProduct = (input: ProductType[]): ProductType | null => {
+  return input.filter((item) => item.stock > 0).at(-1)! ?? null;
+};
+console.log(lastAvailableProduct(products));
+//
 /* day 15 */
 /* problem 76 */
 const availableProductNamesSorted = (input: ProductType[]): string[] => {
