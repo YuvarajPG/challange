@@ -265,7 +265,9 @@ const totalStockStartingWith = (
   input: ProductType[],
   letter: string,
 ): number | any => {
-  return input.filter((item) => item.name.toLowerCase().startsWith(letter)).reduce((prev,curr)=>(prev+=curr.stock),0);
+  return input
+    .filter((item) => item.name.toLowerCase().startsWith(letter))
+    .reduce((prev, curr) => (prev += curr.stock), 0);
 };
 console.log(totalStockStartingWith(products, "l"));
 
@@ -290,7 +292,64 @@ const alphabeticalNames = (input: ProductType[]): string[] => {
 console.log(alphabeticalNames(products));
 
 /* problem 75 */
-const lastAvailableProduct = (input: ProductType[]): ProductType | null => {
-  return input.filter((item) => item.stock > 0).at(-1)!;
+// const lastAvailableProduct = (input: ProductType[]): ProductType | null => {
+// return input.filter((item) => item.stock > 0).at(-1)!;
+// };
+// console.log(lastAvailableProduct(products));
+
+/* day 15 */
+/* problem 76 */
+const availableProductNamesSorted = (input: ProductType[]): string[] => {
+  return input
+    .filter((item) => item.stock > 0)
+    .map((item) => item.name)
+    .sort();
 };
-console.log(lastAvailableProduct(products));
+console.log(
+  "avilable products names sorted",
+  availableProductNamesSorted(products),
+);
+
+/* problem 77 */
+const totalInvValue = (input: ProductType[]): number => {
+  return input
+    .filter((item) => item.stock > 0)
+    .reduce((prev, curr) => (prev += curr.stock * curr.price), 0);
+};
+console.log(totalInvValue(products));
+
+/* problem 78 */
+const productsBetweenPrice = (
+  input: ProductType[],
+  min: number,
+  max: number,
+): string[] => {
+  return input
+    .filter((item) => item.price > min && item.price < max)
+    .map((item) => item.name);
+};
+console.log(productsBetweenPrice(products, 100, 15000));
+
+/* problem 79 */
+const cheapestProduct = (input: ProductType[]): ProductType | null => {
+  return (
+    input.reduce(
+      (prev, curr) => (prev = curr.price > prev.price ? prev : curr),
+    ) ?? null
+  );
+};
+console.log(cheapestProduct(products));
+
+/* problem 80 */
+const averageStockAbovePrice = (
+  input: ProductType[],
+  price: number,
+): number => {
+  return (
+    input
+      .filter((item) => item.price > price)
+      .reduce((prev, curr) => (prev += curr.stock), 0) /
+    input.filter((item) => item.price > price).length
+  );
+};
+console.log(averageStockAbovePrice(products, 1555));
