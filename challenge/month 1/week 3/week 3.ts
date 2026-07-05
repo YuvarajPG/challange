@@ -59,7 +59,9 @@ const availableCheapProducts = (
   input: ProductType[],
   price: number,
 ): string[] => {
-  return input.filter((item) => item.stock>0&& item.price < price).map((item) => item.name);
+  return input
+    .filter((item) => item.stock > 0 && item.price < price)
+    .map((item) => item.name);
 };
 console.log(availableCheapProducts(products, 5000));
 
@@ -77,9 +79,7 @@ console.log(totalStockContainingLetter(products, "L"));
 /* problem 83 */
 const averagePriceOfAvailableProducts = (input: ProductType[]): number => {
   return (
-    input
-      .filter((item) => item.stock > 0)
-      .reduce((p, c) => (p += c.price), 0) /
+    input.filter((item) => item.stock > 0).reduce((p, c) => (p += c.price), 0) /
     input.filter((item) => item.stock > 0).length
   );
 };
@@ -88,7 +88,7 @@ console.log(averagePriceOfAvailableProducts(products));
 /* problem 84 */
 const highestInventoryValue = (input: ProductType[]): ProductType | null => {
   return (
-    input.reduce((p, c) => (p.price * p.stock >  c.stock*c.price ? p : c)) ??
+    input.reduce((p, c) => (p.price * p.stock > c.stock * c.price ? p : c)) ??
     null
   );
 };
@@ -100,3 +100,59 @@ const returnAllProductNames = (input: ProductType[]): string[] => {
   return input.map((item) => item.name + " ( stock: " + item.stock + ")");
 };
 console.log(returnAllProductNames(products));
+
+/* day 17 */
+/* problem 86 */
+const availableProductsStartingWith = (
+  input: ProductType[],
+  letter: string,
+): string[] => {
+  return input
+    .filter(
+      (item) =>
+        item.name.toLowerCase().startsWith(letter.toLowerCase()) &&
+        item.stock > 0,
+    )
+    .map((item) => item.name);
+};
+console.log(availableProductsStartingWith(products, "m"));
+
+/* problem 87 */
+const expensiveInventoryValue = (
+  input: ProductType[],
+  price: number,
+): number => {
+  return input
+    .filter((item) => item.price > price)
+    .reduce((p, c) => (p += c.price*c.stock), 0);
+};
+console.log(expensiveInventoryValue(products, 1000));
+
+/* problem 88 */
+const everyAvailableProductAbovePrice = (
+  input: ProductType[],
+  price: number,
+): boolean => {
+  return input
+    .filter((item) => item.stock > 0)
+    .every((item) => item.price > price);
+};
+console.log(everyAvailableProductAbovePrice(products, 17000));
+
+/* problem 89 */
+const firstHighInventoryProduct = (
+  input: ProductType[],
+  value: number,
+): ProductType | null => {
+  return input.find((item)=>(item.price*item.stock>value))??null
+};
+console.log(firstHighInventoryProduct(products, 2000));
+
+/* problem 90 */
+const averageInventoryValue = (input: ProductType[]): number => {
+  return (
+    input.reduce((p, c) => (p += c.price * c.stock), 0) /
+    input.filter((item) => item.stock > 0).length
+  );
+};
+console.log(averageInventoryValue(products));
