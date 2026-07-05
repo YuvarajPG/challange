@@ -124,7 +124,7 @@ const expensiveInventoryValue = (
 ): number => {
   return input
     .filter((item) => item.price > price)
-    .reduce((p, c) => (p += c.price*c.stock), 0);
+    .reduce((p, c) => (p += c.price * c.stock), 0);
 };
 console.log(expensiveInventoryValue(products, 1000));
 
@@ -144,7 +144,7 @@ const firstHighInventoryProduct = (
   input: ProductType[],
   value: number,
 ): ProductType | null => {
-  return input.find((item)=>(item.price*item.stock>value))??null
+  return input.find((item) => item.price * item.stock > value) ?? null;
 };
 console.log(firstHighInventoryProduct(products, 2000));
 
@@ -156,3 +156,54 @@ const averageInventoryValue = (input: ProductType[]): number => {
   );
 };
 console.log(averageInventoryValue(products));
+
+/* day 18 */
+/* problem 91 */
+const availableHighInventoryNames = (
+  input: ProductType[],
+  value: number,
+): string[] => {
+  return input
+    .filter((item) => item.stock > 0 && item.price * item.stock > value)
+    .map((item) => item.name);
+};
+console.log(availableHighInventoryNames(products, 2));
+
+/* problem 92 */
+const totalPriceEndingWith = (input: ProductType[], letter: string): number => {
+  return input
+    .filter((item) => item.name.toLowerCase().endsWith(letter.toLowerCase()))
+    .reduce((p, c) => (p += c.price), 0);
+};
+console.log(totalPriceEndingWith(products, "e"));
+
+/* problem 93 */
+const hasAvailableProductContaining = (
+  input: ProductType[],
+  text: string,
+): boolean => {
+  return input.some(
+    (item) =>
+      item.stock > 0 && item.name.toLowerCase().includes(text.toLowerCase()),
+  );
+};
+console.log(hasAvailableProductContaining(products, "o"));
+
+/* problem 94 */
+const lowestInventoryProduct = (input: ProductType[]): ProductType | null => {
+  return (
+    input.filter((item)=>(item.stock>0)).reduce((p, c) => (p.price * p.stock < c.price * c.stock ? p : c)) ??
+    null
+  );
+  //idk i did some thing
+  // i give up i dont know how to sort this sh*t without sort()
+};
+console.log(lowestInventoryProduct(products));
+
+/* problem 95 */
+const productLabels = (input: ProductType[]): string[] => {
+  return input.map(
+    (item) => `${item.name} - ${item.price} (Stock : ${item.stock})`,
+  );
+};
+console.log(productLabels(products));

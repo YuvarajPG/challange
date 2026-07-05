@@ -28,7 +28,7 @@ export const normalProducts: NormalProduct[] = [
 
 // week 2 data.ts
 export const products: ProductType[] = [
-    { name: "Mouse", price: 500, stock: 3 },
+    { name: "Mouse", price: 5500, stock: 3 },
     { name: "Keyboard", price: 1500, stock: 1 },
     { name: "Monitor", price: 12000, stock: 0 },
     { name: "Laptop", price: 20000, stock: 4 },
