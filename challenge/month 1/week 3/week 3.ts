@@ -192,8 +192,9 @@ console.log(hasAvailableProductContaining(products, "o"));
 /* problem 94 */
 const lowestInventoryProduct = (input: ProductType[]): ProductType | null => {
   return (
-    input.filter((item)=>(item.stock>0)).reduce((p, c) => (p.price * p.stock < c.price * c.stock ? p : c)) ??
-    null
+    input
+      .filter((item) => item.stock > 0)
+      .reduce((p, c) => (p.price * p.stock < c.price * c.stock ? p : c)) ?? null
   );
   //idk i did some thing
   // i give up i dont know how to sort this sh*t without sort()
@@ -201,9 +202,61 @@ const lowestInventoryProduct = (input: ProductType[]): ProductType | null => {
 console.log(lowestInventoryProduct(products));
 
 /* problem 95 */
-const productLabels = (input: ProductType[]): string[] => {
+const labels = (input: ProductType[]): string[] => {
   return input.map(
     (item) => `${item.name} - ${item.price} (Stock : ${item.stock})`,
   );
 };
-console.log(productLabels(products));
+console.log(labels(products));
+
+/* day 19 */
+/* problem 96 */
+const availableProductsBetweenPrice = (
+  input: ProductType[],
+  min: number,
+  max: number,
+): string[] => {
+  return input
+    .filter((item) => item.stock > 0 && item.price > min && item.price < max)
+    .map((item) => item.name);
+};
+console.log(availableProductsBetweenPrice(products, 200, 1000));
+
+/* problem 97 */
+const totalStockStartingWith = (
+  input: ProductType[],
+  letter: string,
+): number => {
+  return input
+    .filter((item) => item.name.toLowerCase().startsWith(letter.toLowerCase()))
+    .reduce((p, c) => (p += c.stock), 0);
+};
+console.log(totalStockStartingWith(products, "m"));
+/* problem 98 */
+const averageInventoryValueAbovePrice = (
+  input: ProductType[],
+  price: number,
+): number => {
+  return (
+    input
+      .filter((item) => item.price > price)
+      .reduce((p, c) => (p += c.price * c.stock), 0) /
+    input.filter((item) => item.price > price).length
+  );
+};
+console.log(averageInventoryValueAbovePrice(products, 1000));
+
+/* problem 99 */
+const highestPriceProduct = (input: ProductType[]): ProductType | null => {
+  return input.reduce((p, c) => (p.price > c.price ? p : c)) ?? null;
+};
+console.log(highestPriceProduct(products));
+
+/* problem 100 */
+const availableProductLabels = (input: ProductType[]): string[] => {
+  return input
+    .filter((item) => item.stock > 0)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((item) => `${item.name} - $${item.price}`);
+};
+console.log(availableProductLabels(products));
