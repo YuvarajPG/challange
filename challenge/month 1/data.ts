@@ -36,9 +36,9 @@ export const products: ProductType[] = [
 
 export const unSortedArr :ProductTypeWithOutStock[]=[
     { name: "Mouse", price: 500 },
-    { name: "Keyboard", price: 1000 },
-    { name: "Monitor", price: 5000 },
-    { name: "Laptop", price: 2200 },
+    { name: "Keyboard", price: 10 },
+    { name: "Monitor", price: 50 },
+    { name: "Laptop", price: 2000 },
 ];
 // week 3 data.ts
 export type UserType = {

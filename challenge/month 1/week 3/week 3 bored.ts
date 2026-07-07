@@ -11,4 +11,3 @@ const count = (input: ProductType[]): number => {
   return count;
 };
 console.log("count of products ",count(products));
-

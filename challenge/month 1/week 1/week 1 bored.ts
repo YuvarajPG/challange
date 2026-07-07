@@ -1,4 +1,10 @@
-import { ProductType, products, arr } from "../data";
+import {
+  ProductType,
+  products,
+  arr,
+  unSortedArr,
+  ProductTypeWithOutStock,
+} from "../data";
 /* day 1 */
 /* bored p-1 */
 const adultFunctionAge = (age: number): boolean => {
@@ -100,29 +106,27 @@ console.log(
 );
 
 // /* bored p-8 */
-// const secondMostExpensiveProduct = (array: ProductType[]): string => {
-//     let largest = 0;
-//     let second = 0;
-//     for (let index = 0; index < array.length; index++) {
-//         if (array[index]!.price > largest) {
-//             /* 100>0 true */ /* loop two 1000> */
-//             /* largest = 100 */
-
-//             largest = array[index]!.price;
-//             second = largest; /* 100 is set to second one */
-//             largest =
-//                 array[index + 1]!
-//                     .price; /* 500 is largest now */ /* 100,1000,500,2000 */
-//             console.log(largest);
-//         } else if (second > array[index]!.price) {
-//         }
-//         /* as for now largest but not the correct one bcz its not sorted data */
-//     }
-
-//     return "none";
-// };
-// console.log("second ", secondMostExpensiveProduct(products));
-
+const secondMostExpensiveProduct = (
+  array: ProductTypeWithOutStock[],
+): string => {
+  let largest = 0;
+  let second = 0;
+  for (let index = 0; index < array.length; index++) {
+    let s = 0;
+    const next = array[index++];
+    const curr = array[index];
+    if (curr!.price > largest) {
+      largest = next!.price;
+      console.log(largest);
+    } else if (largest > next!.price) {
+      s = largest;
+    }
+    console.log(s);
+  }
+  return "none";
+};
+console.log("second ", secondMostExpensiveProduct(unSortedArr));
+//
 /* day 3 */
 /* bored p-9 */
 const productsInRange = (
@@ -152,4 +156,4 @@ console.log(productsInRange(products, 1000, 15000, true));
 
 /* day 4 */
 /* bored p-10 */
- /* skipped */
+/* skipped */
