@@ -365,3 +365,61 @@ const inventoryLabelsAlphabetically = (input: ProductType[]): string[] => {
     .map((item) => `${item.name} - Inventory: ${item.price * item.stock}`);
 };
 console.log(inventoryLabelsAlphabetically(products));
+
+/* day 22 */
+/* problem 111 */
+const availableProductsByInventoryRange = (
+  input: ProductType[],
+  min: number,
+  max: number,
+): string[] => {
+  return input
+    .filter(
+      (item) =>
+        item.stock > 0 &&
+        item.price * item.stock > min &&
+        item.price * item.stock < max,
+    )
+    .map((item) => item.name);
+};
+console.log(availableProductsByInventoryRange(products, 1000, 50000));
+
+/* problem 112 */
+const totalInventoryContaining = (
+  input: ProductType[],
+  text: string,
+): number => {
+  return input
+    .filter((item) => item.name.toLowerCase().includes(text.toLowerCase()))
+    .reduce((p, c) => (p += c.price * c.stock), 0);
+};
+console.log(totalInventoryContaining(products, "b"));
+
+/* problem 113 */
+const everyExpensiveProductAvailable = (
+  input: ProductType[],
+  price: number,
+): boolean => {
+  return input
+    .filter((item) => item.price > price)
+    .every((item) => item.stock > 0);
+};
+console.log(everyExpensiveProductAvailable(products, 5000));
+
+/* problem 114 */
+const highestInventoryProduct = (input: ProductType[]): ProductType | null => {
+  return (
+    input.reduce((p, c) => (p.price * p.stock > c.price * c.stock ? p : c)) ??
+    null
+  );
+};
+console.log(highestInventoryProduct(products));
+
+/* problem 115 */
+const inventoryLabelsByValue = (input: ProductType[]): string[] => {
+  return input
+    .filter((item) => item.stock > 0)
+    .sort((a, b) => b.price * b.stock - a.price * a.stock)
+    .map((item) => `${item.name} - Inventory: ${item.price * item.stock}`);
+};
+console.log(inventoryLabelsByValue(products));
