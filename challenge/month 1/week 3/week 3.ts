@@ -484,7 +484,7 @@ const productNamesByStockRange = (
   max: number,
 ): string[] => {
   return input
-    .filter((item) => item.price > min && item.price < max)
+    .filter((item) => item.stock > min && item.stock < max)
     .map((item) => item.name);
 };
 console.log(productNamesByStockRange(products, 2, 3));
@@ -494,7 +494,9 @@ const availableCheapInventory = (
   input: ProductType[],
   price: number,
 ): number => {
-  return input.filter((item) => item.price * item.stock < price).length;
+  return input
+    .filter((item) => item.stock > 0 && item.price < price)
+    .reduce((p, c) => (p += c.price * c.stock), 0);
 };
 console.log(availableCheapInventory(products, 200));
 
@@ -503,10 +505,9 @@ const everyAvailableContains = (
   input: ProductType[],
   text: string,
 ): boolean => {
-  return input.every(
-    (item) =>
-      item.stock > 0 && item.name.toLowerCase().includes(text.toLowerCase()),
-  );
+  return input
+    .filter((item) => item.stock > 0)
+    .every((item) => item.name.toLowerCase().includes(text.toLowerCase()));
 };
 console.log(everyAvailableContains(products, "s"));
 
@@ -514,14 +515,69 @@ console.log(everyAvailableContains(products, "s"));
 const highestAvailablePriceProduct = (
   input: ProductType[],
 ): ProductType | null => {
-  return input.reduce((p, c) => (p.stock > c.stock ? p : c)) ?? null;
+  return (
+    input
+      .filter((item) => item.stock > 0)
+      .reduce((p, c) => (p.price > c.price ? p : c)) ?? null
+  );
 };
 console.log(highestAvailablePriceProduct(products));
 
 /* problem 125 */
 const labelsSortedByStock = (input: ProductType[]): string[] => {
   return input
-    .sort((a, b) => a.price * a.stock - b.price * b.stock)
-    .map((item) => `${item.name} - Inventory: ${item.price * item.stock}`);
+    .sort((a, b) => b.stock - a.stock)
+    .map((item) => `${item.name} - Stock: ${item.stock}`);
 };
 console.log(labelsSortedByStock(products));
+
+/* day 25 */
+/* problem 126 */
+const productsAboveAverageInventory = (input: ProductType[]): string[] => {
+  const avg =
+    input
+      .filter((item) => item.stock > 0)
+      .reduce((p, c) => (p += c.price * c.stock), 0) /
+    input.filter((item) => item.stock > 0).length;
+  return input
+    .filter((item) => item.stock > 0 && item.price * item.stock > avg)
+    .map((item) => item.name);
+};
+console.log(productsAboveAverageInventory(products));
+
+/* problem 127 */
+const totalPriceStartingWith = (
+  input: ProductType[],
+  letter: string,
+): number => {
+  return input
+    .filter((item) => item.name.toLowerCase().startsWith(letter.toLowerCase()))
+    .reduce((p, c) => (p += c.price), 0);
+};
+console.log(totalPriceStartingWith(products, "e"));
+
+/* problem 128 */
+const noAvailableZeroStock = (input: ProductType[]): boolean => {
+  return input.every((item) => item.stock > 0); //wtf is this question no clue
+};
+console.log(noAvailableZeroStock(products));
+
+/* problem 129 */
+const highestAvailableInventory = (
+  input: ProductType[],
+): ProductType | null => {
+  return (
+    input
+      .filter((item) => item.stock > 0)
+      .reduce((p, c) => (p.price * p.stock > c.price * c.stock ? p : c)) ?? null
+  );
+};
+console.log(highestAvailableInventory(products));
+
+/* problem 130 */
+const inventoryLabelsLowestFirst = (input: ProductType[]): string[] => {
+  return input
+    .sort((a, b) => a.stock * a.price - b.stock * b.price)
+    .map((item) => `${item.name} - Inventory: ${item.price * item.stock}`);
+};
+console.log(inventoryLabelsLowestFirst(products));
