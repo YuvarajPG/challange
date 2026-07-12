@@ -423,3 +423,55 @@ const inventoryLabelsByValue = (input: ProductType[]): string[] => {
     .map((item) => `${item.name} - Inventory: ${item.price * item.stock}`);
 };
 console.log(inventoryLabelsByValue(products));
+
+/* day 23 */
+/* problem 116 */
+const availableLongProductNames = (
+  input: ProductType[],
+  length: number,
+): string[] => {
+  return input
+    .filter((item) => item.stock > 0 && item.name.length > length)
+    .map((item) => item.name);
+};
+console.log(availableLongProductNames(products, 2));
+
+/* problem 117 */
+const totalStockHighInventory = (
+  input: ProductType[],
+  value: number,
+): number => {
+  return input
+    .filter((item) => item.price * item.stock > value)
+    .reduce((p, c) => (p += c.stock), 0);
+};
+console.log(totalStockHighInventory(products, 2));
+
+/* problem 118 */
+const hasInventoryContaining = (
+  input: ProductType[],
+  value: number,
+  text: string,
+): boolean => {
+  return input.some(
+    (item) =>
+      item.stock > 0 &&
+      item.name.toLowerCase().includes(text.toLowerCase()) &&
+      item.price * item.stock > value,
+  );
+};
+console.log(hasInventoryContaining(products, 2, "s"));
+
+/* problem 119 */
+const lowestStockProduct = (input: ProductType[]): ProductType | null => {
+  return input.reduce((p, c) => (p.stock < c.stock ? p : c)) ?? null;
+};
+console.log(lowestStockProduct(products));
+
+/* problem 120 */
+const alphabeticalProductLabels = (input: ProductType[]): string[] => {
+  return input
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((item) => `${item.name} (${item.price}) Stock: ${item.stock}`);
+};
+console.log(alphabeticalProductLabels(products));
