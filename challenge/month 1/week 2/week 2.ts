@@ -1,8 +1,4 @@
-import {
-  products,
-  ProductType,
-  ProductTypeWithOutStock,
-} from "../data";
+import { products, ProductType, ProductTypeWithOutStock } from "../data";
 
 /* day 8 */
 /* problem 41 */
@@ -295,55 +291,3 @@ const lastAvailableProduct = (input: ProductType[]): ProductType | null => {
   return input.filter((item) => item.stock > 0).at(-1)! ?? null;
 };
 console.log(lastAvailableProduct(products));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
