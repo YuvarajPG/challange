@@ -1,0 +1,18 @@
+complex version for updatedProduct function
+const updateProducts = (
+    data: invType[],
+    product: string,
+    updateFor: string,
+    newPrice: number,
+    newStock: number = 0,
+): void => {
+    const finded = findProduct(data, product);
+    if (finded !== null) {
+        updateFor!.toLowerCase() === "price"
+            ? (finded!.price = newPrice)
+            : updateFor!.toLowerCase() === "stock"
+              ? (finded!.stock = newStock)
+              : null;
+    }
+    console.log(inventory);
+};
