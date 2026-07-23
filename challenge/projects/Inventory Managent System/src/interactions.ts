@@ -9,7 +9,6 @@ import {
     updateStock,
 } from "./IMS";
 import { loadInventory, display } from "./extra";
-import { details } from "framer-motion/client";
 
 const rl = readline.createInterface({ input, output });
 const op = `====== IMS ======
