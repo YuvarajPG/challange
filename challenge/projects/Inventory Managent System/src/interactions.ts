@@ -9,6 +9,7 @@ import {
     updateStock,
 } from "./IMS";
 import { loadInventory, display } from "./extra";
+import { details } from "framer-motion/client";
 
 const rl = readline.createInterface({ input, output });
 const op = `====== IMS ======
@@ -31,7 +32,6 @@ const main = async () => {
             break;
         case "2":
             await findF();
-            console.clear();
             break;
         case "3":
             await updateF();
@@ -78,16 +78,13 @@ const addF = async (): Promise<void> => {
     });
 
     console.log("✅ Product added!");
-    setTimeout(() => {
-        console.table([added]);
-    }, 500);
+    console.table([added]);
 };
 
 const findF = async (): Promise<void> => {
     const findingItemName = await rl.question("Product name: ");
-    findProduct(findingItemName).then((p) => {
-        console.table(p);
-    });
+    const finded = await findProduct(findingItemName);
+    finded !== undefined ? console.table([finded]) : null;
 };
 
 const updateF = async (): Promise<void> => {
@@ -100,6 +97,10 @@ const updateF = async (): Promise<void> => {
         name: item.name,
         price: item.price,
         stock: item.stock,
+        details: {
+            ram: item.details.ram,
+            rom: item.details.rom,
+        },
     }));
 
     console.table(data);
