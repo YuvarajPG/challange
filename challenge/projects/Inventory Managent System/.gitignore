@@ -33,5 +33,4 @@ coverage/
 *.temp
 
 # customs
-interactions.ts
-inventory_data.json
+test

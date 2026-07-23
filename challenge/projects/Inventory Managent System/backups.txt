@@ -1,0 +1,40 @@
+v1
+export const updatePrice = async (
+  product: string,
+  newPrice: number,
+): Promise<invType[] | undefined> => {
+  let inventory = await loadInventory();
+  const finded = await findProduct(product);
+
+  if (finded !== undefined) {
+    finded!.price = newPrice;
+    // savingData();
+    console.table([finded]);
+    return inventory;
+  }
+};
+
+v2
+export const findProduct = async (
+    search: string,
+    updateF: boolean = false,
+): Promise<invType | undefined> => {
+    const inventory = await loadInventory();
+    if (inventory.length === 0) return;
+    else {
+        const find = inventory.find(
+            (item) =>
+                item.brand.toLowerCase().includes(search.toLowerCase()) ||
+                item.name.toLowerCase().includes(search.toLowerCase()),
+        );
+        if (updateF) {
+            await removeProduct(search);
+            
+            await savingData(inventory);
+        }
+        if (find === undefined) {
+            console.log("the product doesnt exist");
+        }
+        return find;
+    }
+};
